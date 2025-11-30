@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>RECARRY-ROUTE ENABLED COURIER ASSISTANCE FOR REACHING AND REWARDING YOU</title>
+<meta name="description" content="ReCarry connects people who forgot items with verified travellers on trains for fast, same-day station-to-station delivery. 100% Aadhaar verified users."/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #07498c;         /* Deep Navy Blue (brand) */
+    --amber: #ff9a00;        /* Bright Amber / Orange (CTA) */
+    --amber-600: #ff8700;
+    --bg: #ffffff;
+    --muted: #56606f;
+    --card: #f8fafc;
+    --accent: #e6f6ff;
+    --radius: 14px;
+    --shadow: 0 12px 36px rgba(6,33,59,0.08);
+    --focus: 3px solid rgba(6,33,59,0.12);
+    --high-contrast: #0b1220; /* For outdoor readability */
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color-scheme: light;
+  }
+
+  /* Reset */
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;background:var(--bg);color:var(--high-contrast);-webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;font-size:16px;line-height:1.45;
+    padding:0 12px 48px;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;height:auto;display:block}
+
+  /* Layout */
+  .wrap{max-width:1100px;margin:20px auto}
+  header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border-radius:12px}
+  .brand{display:flex;align-items:center;gap:10px}
+  .logo{
+    width:48px;height:48px;border-radius:10px;background:var(--navy);display:grid;place-items:center;
+    color:var(--bg);font-weight:800;font-size:18px;box-shadow:var(--shadow)
+  }
+  .brand .title{font-weight:700}
+  .nav-links{display:none}
+
+  /* Hero (mobile-first) */
+  .hero{
+    margin-top:12px;background:linear-gradient(180deg, #ffffff 0%, rgba(6,33,59,0.02) 100%);
+    border-radius:16px;padding:18px;border:1px solid #eef4fb;box-shadow:0 8px 30px rgba(6,33,59,0.04);
+  }
+  .hero-top{display:flex;gap:12px;align-items:center;justify-content:space-between}
+  .hero-copy{flex:1}
+  h1{margin:6px 0 6px;font-size:20px;line-height:1.02;font-weight:800;color:var(--high-contrast)}
+  p.lead{margin:0;color:var(--muted);font-weight:500}
+  .hero-search{margin-top:14px;display:flex;gap:10px;flex-direction:column}
+  .search-bar{
+    display:flex;gap:8px;align-items:center;padding:12px;border-radius:12px;background:var(--card);
+    border:1px solid #e6eef8;
+  }
+  .search-bar input{
+    border:0;outline:0;background:transparent;font-size:15px;color:var(--high-contrast);
+    width:100%;
+  }
+  .search-btn{background:var(--navy);color:white;padding:10px 14px;border-radius:10px;border:none;font-weight:700;cursor:pointer}
+  .hero-ctas{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+  .btn-send{
+    background:linear-gradient(90deg,var(--amber),var(--amber-600));color:var(--navy);
+    border:none;padding:12px 14px;border-radius:12px;font-weight:800;cursor:pointer;box-shadow:0 10px 24px rgba(255,154,0,0.12)
+  }
+  .btn-traveller{
+    background:transparent;border:2px solid var(--navy);color:var(--navy);padding:10px 14px;border-radius:12px;font-weight:700;cursor:pointer
+  }
+
+  /* How it works */
+  .section{margin-top:20px}
+  .section h2{margin:0 0 8px;font-size:18px}
+  .steps{display:grid;gap:10px;grid-template-columns:1fr}
+  .step{display:flex;gap:12px;align-items:flex-start;background:var(--card);padding:12px;border-radius:12px;border:1px solid #eef4fb}
+  .icon-circle{width:48px;height:48px;border-radius:10px;background:var(--accent);display:grid;place-items:center;font-weight:800;color:var(--navy)}
+  .step h4{margin:0;font-size:15px}
+  .step p{margin:6px 0 0;color:var(--muted);font-size:14px}
+
+  /* Trust banner */
+  .trust{display:flex;gap:12px;align-items:center;background:#fff9f2;border-radius:12px;padding:12px;margin-top:16px;border:1px solid rgba(255,154,0,0.08)}
+  .trust .item{display:flex;gap:8px;align-items:center;font-weight:700;color:var(--navy)}
+  .trust small{display:block;color:var(--muted);font-weight:500}
+
+  /* Live requests feed */
+  .feed{margin-top:16px;border-radius:12px;border:1px solid #eef4fb;padding:12px;background:linear-gradient(180deg,#fff,#fbfdff)}
+  .request{display:flex;justify-content:space-between;gap:12px;padding:10px;border-radius:10px;border-bottom:1px dashed #eef6ff}
+  .request:last-child{border-bottom:0}
+  .req-left{display:flex;gap:12px;align-items:center}
+  .req-type{width:44px;height:44px;border-radius:8px;background:linear-gradient(180deg,var(--navy),#0a2b50);display:grid;place-items:center;color:white;font-weight:800}
+  .req-txt{min-width:0}
+  .req-txt strong{display:block;font-weight:700}
+  .req-offer{font-weight:800;color:var(--navy)}
+
+  /* Footer */
+  footer{margin-top:28px;padding:18px 0;border-top:1px solid #f2f4f7;color:var(--muted)}
+  .footer-grid{display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between;align-items:center}
+
+  /* Desktop adjustments */
+  @media(min-width:880px){
+    .nav-links{display:flex;gap:18px;align-items:center}
+    header{padding:16px}
+    h1{font-size:28px}
+    .steps{grid-template-columns:repeat(3,1fr)}
+    .feed{max-width:540px}
+    .hero{display:flex;gap:18px;align-items:center}
+    .hero-right{flex:0 0 360px}
+  }
+
+  /* Accessibility & focus */
+  input:focus, button:focus{outline:var(--focus);outline-offset:3px}
+  .high-contrast{color:var(--high-contrast);font-weight:700}
+  .muted{color:var(--muted)}
+</style>
+</head>
+<body>
+  <div class="wrap" role="main">
+
+    <!-- Header -->
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">RC</div>
+        <div>
+          <div class="title">ReCarry</div>
+          <div style="font-size:12px;color:var(--muted)">Station-to-station deliveries</div>
+        </div>
+      </div>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#how" class="muted">How it works</a>
+        <a href="#features" class="muted">Features</a>
+        <a href="#pricing" class="muted">Pricing</a>
+        <a href="#faq" class="muted">FAQ</a>
+        <button class="btn-traveller" onclick="openLogin()" style="margin-left:6px">Login</button>
+        <button class="btn-send" onclick="openSignup()">Signup</button>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <h1 id="hero-title">Forgot something at home? Get it delivered in hours via Train Travelers.</h1>
+        <p class="lead">Match with verified travellers on the same train and receive platform-to-platform delivery — fast, secure and affordable.</p>
+
+        <!-- search -->
+        <div class="hero-search" role="search" aria-label="Search train or route">
+          <div class="search-bar" role="search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="opacity:.72"><path d="M21 21l-4.35-4.35" stroke="#0B1220" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="6" stroke="#0B1220" stroke-width="1.6"/></svg>
+            <input id="searchInput" placeholder="Enter train number or route (e.g. 12951 or Delhi → Kanpur)" aria-label="Enter train number or route" />
+            <button class="search-btn" onclick="searchAction()">Search</button>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:10px" aria-hidden="false">
+            <button class="btn-send" onclick="sendItem()">I want to SEND an Item</button>
+            <button class="btn-traveller" onclick="becomeTraveller()">I am TRAVELLING (Earn Money)</button>
+          </div>
+        </div>
+
+        <!-- trust banner -->
+        <div class="trust" style="margin-top:14px" role="region" aria-label="Trust and safety">
+          <div class="item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 1v5" stroke="#ff9a00" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>100% Aadhaar Verified</div>
+          <div class="item" style="opacity:.95"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 12h18" stroke="#06213b" stroke-width="1.6" stroke-linecap="round"/></svg><small>PNR Verification</small></div>
+          <div class="item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2v4" stroke="#06213b" stroke-width="1.6" stroke-linecap="round"/></svg><small>Live Tracking</small></div>
+        </div>
+      </div>
+
+      <!-- Live Requests Feed (right side on desktop) -->
+      <aside style="margin-top:14px" class="hero-right" aria-label="Live requests">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <div style="font-weight:800">Live requests</div>
+          <div style="font-size:13px;color:var(--muted)">Updated now</div>
+        </div>
+
+        <div class="feed" id="liveFeed" aria-live="polite">
+          <!-- JS will populate -->
+        </div>
+
+        <div style="margin-top:12px;display:flex;gap:8px;justify-content:space-between">
+          <button class="btn-send" style="flex:1" onclick="postDummy()">Post a request (demo)</button>
+          <button class="btn-traveller" style="width:44%" onclick="filterOffers()">Filter</button>
+        </div>
+      </aside>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" class="section" aria-labelledby="how-heading">
+      <h2 id="how-heading">How it works — 3 easy steps</h2>
+      <div class="steps" style="margin-top:12px">
+        <div class="step" aria-hidden="false">
+          <div class="icon-circle">1</div>
+          <div>
+            <h4>Enter route or train number</h4>
+            <p class="muted">Tell us where the item is and where it needs to go — train number or source → destination.</p>
+          </div>
+        </div>
+
+        <div class="step" aria-hidden="false">
+          <div class="icon-circle">2</div>
+          <div>
+            <h4>Match with verified traveler</h4>
+            <p class="muted">We notify travellers on that train. Only Aadhaar-verified travellers can accept the task.</p>
+          </div>
+        </div>
+
+        <div class="step" aria-hidden="false">
+          <div class="icon-circle">3</div>
+          <div>
+            <h4>Secure handover at platforms</h4>
+            <p class="muted">Pickup at Platform A, drop at Platform B with single-use OTP verification.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust & safety banner (detailed) -->
+    <section class="section" aria-labelledby="safety">
+      <h2 id="safety">Trust & Safety</h2>
+      <div style="margin-top:12px;display:flex;gap:12px;flex-direction:column">
+        <div style="display:flex;gap:18px;flex-wrap:wrap">
+          <div style="flex:1;min-width:220px;background:#fff;border-radius:12px;padding:12px;border:1px solid #eef4fb">
+            <div style="font-weight:800">100% Aadhaar Verified Users</div>
+            <div class="muted" style="margin-top:6px">All travellers complete Aadhaar OTP and face-match during onboarding.</div>
+          </div>
+
+          <div style="flex:1;min-width:220px;background:#fff;border-radius:12px;padding:12px;border:1px solid #eef4fb">
+            <div style="font-weight:800">PNR Verification</div>
+            <div class="muted" style="margin-top:6px">We confirm passenger ticket & PNR before allowing them to accept requests.</div>
+          </div>
+
+          <div style="flex:1;min-width:220px;background:#fff;border-radius:12px;padding:12px;border:1px solid #eef4fb">
+            <div style="font-weight:800">Live Tracking & Support</div>
+            <div class="muted" style="margin-top:6px">Real-time tracking, in-app chat and 24/7 support for high-value shipments.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-grid" role="contentinfo">
+        <div>
+          <div style="font-weight:800">ReCarry</div>
+          <div class="muted" style="margin-top:6px">Station-to-station same-day deliveries</div>
+        </div>
+
+        <div style="display:flex;gap:18px;flex-wrap:wrap">
+          <a href="#" class="muted">Privacy Policy</a>
+          <a href="#" class="muted">Safety Guidelines</a>
+          <a href="#" class="muted">Support</a>
+        </div>
+
+        <div style="text-align:right">
+          <div class="muted">Contact: hello@recarry.app</div>
+          <div style="margin-top:8px;color:var(--muted)">© <span id="year"></span> ReCarry</div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+<script>
+  // Demo JS for search, live feed, interactions (no backend)
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const sampleFeed = [
+    {id:1, item:'Laptop (15")', route:'Delhi → Kanpur', offer:500, time:'10m ago'},
+    {id:2, item:'Medicine (urgent)', route:'Mumbai → Pune', offer:350, time:'18m ago'},
+    {id:3, item:'Passport docs', route:'Howrah → Asansol', offer:450, time:'35m ago'},
+    {id:4, item:'Charger & Adapter', route:'Bengaluru → Mysore', offer:120, time:'1h ago'},
+  ];
+
+  function renderFeed(){
+    const feed = document.getElementById('liveFeed');
+    feed.innerHTML = '';
+    sampleFeed.slice(0,6).forEach(r=>{
+      const el = document.createElement('div');
+      el.className = 'request';
+      el.innerHTML = `
+        <div class="req-left">
+          <div class="req-type" aria-hidden="true">#${r.id}</div>
+          <div class="req-txt">
+            <strong>${r.item}</strong>
+            <div class="muted" style="font-size:13px">${r.route} · <span style="color:var(--muted)">${r.time}</span></div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;justify-content:center">
+          <div class="req-offer">₹${r.offer}</div>
+          <div style="margin-top:6px"><button class="btn-traveller" onclick="makeOffer(${r.id})">Offer</button></div>
+        </div>
+      `;
+      feed.appendChild(el);
+    });
+  }
+
+  function makeOffer(id){
+    alert('Open offer modal (demo) for request #' + id);
+  }
+
+  function searchAction(){
+    const q = document.getElementById('searchInput').value.trim();
+    if(!q) { alert('Please enter a train number or route (e.g. 12951 or Delhi → Kanpur).'); return; }
+    alert('Searching for: ' + q + ' (demo). We will match travellers on that route.');
+  }
+
+  function sendItem(){ alert('Start SEND flow (demo): Open request form.'); }
+  function becomeTraveller(){ alert('Start Traveller onboarding (demo): show benefits & KYC flow.'); }
+  function openLogin(){ alert('Open Login (demo)'); }
+  function openSignup(){ alert('Open Signup (demo)'); }
+  function filterOffers(){ alert('Open filter UI (demo)'); }
+  function postDummy(){
+    // Add a new random dummy and re-render
+    const idx = sampleFeed.length + 1;
+    sampleFeed.unshift({id:idx, item:'Parcel #' + idx, route:'Lucknow → Kanpur', offer:200 + Math.floor(Math.random()*400), time:'just now'});
+    renderFeed();
+  }
+
+  // a simple auto-refresh effect — rotate time labels (demo)
+  setInterval(()=>{
+    sampleFeed.forEach((s,i)=> s.time = (i===0 ? 'just now' : (Math.floor(Math.random()*58)+1) + 'm ago'));
+    renderFeed();
+  }, 9000);
+
+  // initial render
+  renderFeed();
+
+  // Accessibility: high contrast mode for sunlight (toggle by pressing 'H')
+  document.addEventListener('keydown', (e)=>{
+    if(e.key.toLowerCase() === 'h'){ // toggle high contrast
+      const root = document.documentElement;
+      if(root.style.filter === 'contrast(1.15)') root.style.filter = '';
+      else root.style.filter = 'contrast(1.15)';
+    }
+  });
+</script>
+</body>
+</html>
+
